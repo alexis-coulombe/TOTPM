@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
     </head>
     <body>
