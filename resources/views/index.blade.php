@@ -1,8 +1,16 @@
+<?php
+    /**
+     * Main template for this application.
+     * Contains navs, footer, header.
+     */
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -29,15 +37,5 @@
         </div>
 
         <script src="{{ URL::asset('js/app.js') }}"></script>
-
-        <script>
-          /* construct manually */
-          var bar1 = new ldBar("#myItem1");
-          /* ldBar stored in the element */
-          var bar2 = document.getElementById('myItem1').ldBar;
-          bar1.set(60);
-
-          $('.ldBar-label').hide();
-        </script>
     </body>
 </html>

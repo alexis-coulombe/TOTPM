@@ -927,7 +927,6 @@
 
 .content-wrapper {
     background: #F3F3F3;
-    padding: 1.5rem 1.7rem;
     width: 100%;
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
@@ -15181,29 +15180,6 @@ pre {
     transition-duration: 250ms;
 }
 
-.form-check .form-check-label .input-helper:after {
-    -webkit-transition: all;
-    transition: all;
-    -webkit-transition-duration: 0s;
-    transition-duration: 0s;
-    -webkit-transition-duration: 250ms;
-    transition-duration: 250ms;
-    font-family: Material Design Icons;
-    opacity: 0;
-    filter: alpha(opacity=0);
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    content: '\F12C';
-    position: absolute;
-    font-size: 0.9375rem;
-    font-weight: bold;
-    left: 0;
-    top: 14%;
-    -webkit-transform: translateY(-14%);
-    transform: translateY(-14%);
-    color: #8862e0;
-}
-
 .form-check.form-check-flat label input:checked + .input-helper:before {
     background-color: #19d895;
     border: none;
@@ -16468,5 +16444,5 @@ svg {
 }
 
 .container-fluid {
-    padding-left: 0 !important;
+    padding: 0 !important;
 }

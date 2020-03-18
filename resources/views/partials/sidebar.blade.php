@@ -1,3 +1,10 @@
+<?php
+    /**
+     * Main sidebar template.
+     * Contains user infos and links.
+     */
+?>
+
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
         <li class="nav-item nav-category">Main Menu</li>

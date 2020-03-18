@@ -1,3 +1,10 @@
+<?php
+    /**
+     * Main header template.
+     * Contains filters.
+     */
+?>
+
 <div class="row page-title-header">
     <div class="col-12">
         <div class="page-header">
