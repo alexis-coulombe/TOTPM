@@ -62531,6 +62531,13 @@ if (submitCodeButton) {
     if (secretCodeField.value !== '') {
       var newToken = twoFactor.generateToken(secretCodeField.value);
       console.log(newToken);
+      $.ajax({
+        url: this.data('url'),
+        method: 'POST',
+        data: {},
+        success: function success(data) {},
+        error: function error(data) {}
+      });
     }
   });
 }

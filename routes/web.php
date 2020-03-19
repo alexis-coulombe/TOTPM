@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index')->name('index')->middleware('auth');
 Route::get('/logout', 'HomeController@logout')->name('logout')->middleware('auth');
 
-Auth::routes();
+// codes
+Route::post('/code/store', 'CodeController@lstore')->name('code.store')->middleware('auth');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();

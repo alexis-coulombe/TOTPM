@@ -17,6 +17,19 @@ if(submitCodeButton){
     if(secretCodeField.value !== ''){
       let newToken = twoFactor.generateToken(secretCodeField.value);
       console.log(newToken);
+
+      $.ajax({
+        url: this.data('url'),
+        method: 'POST',
+        data: {},
+        success: (data) => {
+
+        },
+        error: (data) => {
+
+        }
+      })
+
     }
   });
 }
