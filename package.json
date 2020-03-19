@@ -31,6 +31,7 @@
         "font-awesome": "^4.7.0",
         "ionicons": "^5.0.1",
         "material-design-icons": "^3.0.1",
+        "node-2fa": "^1.1.2",
         "puse-icons-feather": "^1.1.0",
         "ti-icons": "^0.1.2"
     }

@@ -6,3 +6,18 @@
 
 require('./bootstrap');
 
+let twoFactor = require('node-2fa');
+
+let submitCodeButton = document.getElementById('submitSecretCode');
+
+if(submitCodeButton){
+  submitCodeButton.addEventListener('click', function(){
+    let secretCodeField = document.getElementById('secretCode');
+
+    if(secretCodeField.value !== ''){
+      let newToken = twoFactor.generateToken(secretCodeField.value);
+      console.log(newToken);
+    }
+  });
+}
+
