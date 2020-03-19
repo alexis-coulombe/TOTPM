@@ -24,16 +24,15 @@
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" id="name" placeholder="Username" required autocomplete="name" autofocus>
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
-
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+
+                                    @error('name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="label">Email</label>
@@ -41,16 +40,14 @@
                                         <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="" value="{{ old('email') }}" required autocomplete="email">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="label">Password</label>
@@ -58,16 +55,15 @@
                                         <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
-
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
                                     </div>
+
+                                    @error('password')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="password_confirmation" class="label">Confirm password</label>
@@ -75,7 +71,6 @@
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" id="password_confirmation" required autocomplete="new-password">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
                                     </div>
@@ -90,14 +85,6 @@
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-primary submit-btn btn-block">Login</button>
-                                </div>
-                                <div class="form-group d-flex justify-content-between">
-                                    <div class="form-check form-check-flat mt-0">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input"> Keep me signed in <i class="input-helper"></i>
-                                        </label>
-                                    </div>
-                                    <a href="#" class="text-small forgot-password text-black">Forgot Password ?</a>
                                 </div>
                                 <!--<div class="form-group">
                                     <button class="btn btn-block g-login">

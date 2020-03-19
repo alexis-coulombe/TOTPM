@@ -91,6 +91,11 @@
                     </a>
                 </div>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link count-indicator" id="messageDropdown" href="{{ route('logout') }}">
+                    <i class="mdi mdi-exit-to-app"></i>
+                </a>
+            </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
             <span class="mdi mdi-menu"></span>

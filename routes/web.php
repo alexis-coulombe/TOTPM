@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('index')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('index')->middleware('auth');
+Route::get('/logout', 'HomeController@logout')->name('logout')->middleware('auth');
 
 Auth::routes();
 

@@ -16,27 +16,38 @@
                             <div class="row justify-content-center align-self-center">
                                 <img src="{{ URL::asset('img/logo.png') }}" width="40px" height="45px">
                             </div>
-                            <form action="#">
+                            <form method="POST" action="{{ route('login') }}">
+                                {{ csrf_field() }}
                                 <div class="form-group">
-                                    <label for="username" class="label">Username</label>
+                                    <label for="email" class="label">Email</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
                                     </div>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="password" class="label">Password</label>
                                     <div class="input-group">
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="*********">
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
                                             </span>
                                         </div>
+
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -45,10 +56,13 @@
                                 <div class="form-group d-flex justify-content-between">
                                     <div class="form-check form-check-flat mt-0">
                                         <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input"> Keep me signed in <i class="input-helper"></i>
+                                            <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }} class="form-check-input">
+                                            Keep me signed in <i class="input-helper"></i>
                                         </label>
                                     </div>
-                                    <a href="#" class="text-small forgot-password text-black">Forgot Password ?</a>
+                                    @if (Route::has('password.request'))
+                                        <a href="{{ route('password.request') }}" class="text-small forgot-password text-black">Forgot Password ?</a>
+                                    @endif
                                 </div>
                                 <!--<div class="form-group">
                                     <button class="btn btn-block g-login">
