@@ -8,7 +8,13 @@
     let remainingTime = (30 - Math.floor((new Date()).getTime() / 1000.0 % 30));
 
     Array.prototype.forEach.call(generatedCodes, function(code) {
-      code.innerHTML = twoFactor.generateToken(code.dataset.secret).token;
+      let token = twoFactor.generateToken(code.dataset.secret).token;
+
+      if ($(code).html() !== token) {
+        $(code).animate({'opacity': 0}, 400, function() {
+          $(this).html(twoFactor.generateToken(code.dataset.secret).token).animate({'opacity': 1}, 400);
+        });
+      }
     });
 
     Array.prototype.forEach.call(remainingTimes, function(remaining) {
@@ -30,4 +36,25 @@
 
   $('.ldBar-label').hide();
 
+  let deleteCode = function(element) {
+    let id = element.dataset.id;
+    let csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
+
+    $.ajax({
+      url: element.dataset.url,
+      method: 'POST',
+      data: {
+        id: id,
+        _token: csrfToken,
+      },
+      success: (data) => {
+
+      },
+      error: (data) => {
+
+      },
+    });
+  };
+
+  window.deleteCode = deleteCode;
 })();

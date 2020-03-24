@@ -1,3 +1,7 @@
+.ldBar-label {
+    display: none;
+}
+
 /* Layouts */
 /* Animation Mixins */
 @-webkit-keyframes dropdownAnimation {

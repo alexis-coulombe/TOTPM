@@ -37,4 +37,15 @@ class CodeController extends Controller
         }
     }
 
+    public function destroy(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $id = $request->input('id');
+
+            Code::find($id)->delete();
+
+            return $this->successJson(null, 'Code deleted successfully');
+        }
+    }
+
 }

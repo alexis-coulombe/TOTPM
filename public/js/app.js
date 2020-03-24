@@ -62520,32 +62520,6 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-var twoFactor = __webpack_require__(/*! node-2fa */ "./node_modules/node-2fa/index.js");
-
-var submitCodeButton = document.getElementById('submitSecretCode');
-
-if (submitCodeButton) {
-  submitCodeButton.addEventListener('click', function () {
-    var secretCodeField = document.getElementById('secretCode');
-    var codeName = document.getElementById('name');
-    var csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
-
-    if (secretCodeField.value !== '' && codeName.value !== '') {
-      $.ajax({
-        url: submitCodeButton.dataset.url,
-        method: 'POST',
-        data: {
-          secretCode: secretCodeField.value,
-          name: codeName.value,
-          _token: csrfToken
-        },
-        success: function success(data) {},
-        error: function error(data) {}
-      });
-    }
-  });
-}
-
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -62611,7 +62585,17 @@ __webpack_require__(/*! ./code-block-partials.js */ "./resources/js/code-block-p
   setInterval(function () {
     var remainingTime = 30 - Math.floor(new Date().getTime() / 1000.0 % 30);
     Array.prototype.forEach.call(generatedCodes, function (code) {
-      code.innerHTML = twoFactor.generateToken(code.dataset.secret).token;
+      var token = twoFactor.generateToken(code.dataset.secret).token;
+
+      if ($(code).html() !== token) {
+        $(code).animate({
+          'opacity': 0
+        }, 400, function () {
+          $(this).html(twoFactor.generateToken(code.dataset.secret).token).animate({
+            'opacity': 1
+          }, 400);
+        });
+      }
     });
     Array.prototype.forEach.call(remainingTimes, function (remaining) {
       remaining.innerHTML = remainingTime + ' sec.';
@@ -62629,6 +62613,23 @@ __webpack_require__(/*! ./code-block-partials.js */ "./resources/js/code-block-p
     _bar.set(0);
   });
   $('.ldBar-label').hide();
+
+  var deleteCode = function deleteCode(element) {
+    var id = element.dataset.id;
+    var csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
+    $.ajax({
+      url: element.dataset.url,
+      method: 'POST',
+      data: {
+        id: id,
+        _token: csrfToken
+      },
+      success: function success(data) {},
+      error: function error(data) {}
+    });
+  };
+
+  window.deleteCode = deleteCode;
 })();
 
 /***/ }),

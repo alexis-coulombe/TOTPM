@@ -18,6 +18,7 @@ Route::get('/logout', 'HomeController@logout')->name('logout')->middleware('auth
 
 // codes
 Route::post('/code/store', 'CodeController@store')->name('code.store')->middleware('auth');
+Route::post('/code/destroy', 'CodeController@destroy')->name('code.destroy')->middleware('auth');
 
 
 Auth::routes();

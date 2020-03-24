@@ -1690,6 +1690,10 @@
   /* Support for IE. */
   font-feature-settings: 'liga';
 }
+.ldBar-label {
+    display: none;
+}
+
 /* Layouts */
 /* Animation Mixins */
 @-webkit-keyframes dropdownAnimation {
