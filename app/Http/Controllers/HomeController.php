@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Code;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $codes = Code::where(['user_id' => Auth::user()->id])->get();
+
+        return view('pages.home')->with('codes', $codes);
     }
 
     public function logout()

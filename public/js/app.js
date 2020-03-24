@@ -62527,14 +62527,18 @@ var submitCodeButton = document.getElementById('submitSecretCode');
 if (submitCodeButton) {
   submitCodeButton.addEventListener('click', function () {
     var secretCodeField = document.getElementById('secretCode');
+    var codeName = document.getElementById('name');
+    var csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
 
-    if (secretCodeField.value !== '') {
-      var newToken = twoFactor.generateToken(secretCodeField.value);
-      console.log(newToken);
+    if (secretCodeField.value !== '' && codeName.value !== '') {
       $.ajax({
-        url: this.data('url'),
+        url: submitCodeButton.dataset.url,
         method: 'POST',
-        data: {},
+        data: {
+          secretCode: secretCodeField.value,
+          name: codeName.value,
+          _token: csrfToken
+        },
         success: function success(data) {},
         error: function error(data) {}
       });
@@ -62586,6 +62590,46 @@ window.bootstrap = __webpack_require__(/*! ../../node_modules/bootstrap/dist/js/
 __webpack_require__(/*! ./loading-bar.min */ "./resources/js/loading-bar.min.js");
 
 __webpack_require__(/*! ./script.js */ "./resources/js/script.js");
+
+__webpack_require__(/*! ./code-block-partials.js */ "./resources/js/code-block-partials.js");
+
+/***/ }),
+
+/***/ "./resources/js/code-block-partials.js":
+/*!*********************************************!*\
+  !*** ./resources/js/code-block-partials.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+(function () {
+  var twoFactor = __webpack_require__(/*! node-2fa */ "./node_modules/node-2fa/index.js");
+
+  var bars = [];
+  var generatedCodes = document.querySelectorAll('.generated-code');
+  var remainingTimes = document.querySelectorAll('.remaining-time');
+  setInterval(function () {
+    var remainingTime = 30 - Math.floor(new Date().getTime() / 1000.0 % 30);
+    Array.prototype.forEach.call(generatedCodes, function (code) {
+      code.innerHTML = twoFactor.generateToken(code.dataset.secret).token;
+    });
+    Array.prototype.forEach.call(remainingTimes, function (remaining) {
+      remaining.innerHTML = remainingTime + ' sec.';
+    });
+    Array.prototype.forEach.call(bars, function (bar) {
+      bar.set(remainingTime / 30 * 100, true);
+    });
+  }, 1000);
+  var ldBars = document.querySelectorAll('.ldBar-code');
+  Array.prototype.forEach.call(ldBars, function (bar) {
+    var _bar = new ldBar(bar);
+
+    bars.push(_bar);
+
+    _bar.set(0);
+  });
+  $('.ldBar-label').hide();
+})();
 
 /***/ }),
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Code;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CodeController extends Controller
 {
@@ -31,6 +32,8 @@ class CodeController extends Controller
             $code->name = $name;
             $code->secretCode = $secretCode;
             $code->save();
+
+            return $this->successJson($code->toArray(), 'Code saved successfully');
         }
     }
 

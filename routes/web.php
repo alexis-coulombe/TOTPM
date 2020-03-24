@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index')->middleware('auth');
+Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
 Route::get('/logout', 'HomeController@logout')->name('logout')->middleware('auth');
 
 // codes
-Route::post('/code/store', 'CodeController@lstore')->name('code.store')->middleware('auth');
+Route::post('/code/store', 'CodeController@store')->name('code.store')->middleware('auth');
 
 
 Auth::routes();

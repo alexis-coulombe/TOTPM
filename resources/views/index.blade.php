@@ -27,9 +27,6 @@
                         @include('partials.header')
 
                         @yield('content')
-                        <div class="col-lg-12 grid-margin stretch-card average-price-card">
-                            @include('partials.cards.code')
-                        </div>
                     </div>
                     @include('partials.footer')
                 </div>
