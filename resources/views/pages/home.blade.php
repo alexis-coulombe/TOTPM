@@ -15,4 +15,6 @@
             </div>
         </div>
     @endif
+
+    @include('modals.delete-code')
 @endsection
