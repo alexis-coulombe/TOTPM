@@ -1,11 +1,20 @@
+<?php
+    /**
+     * Main template for this application.
+     * Contains navs, footer, header.
+     */
+?>
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
     </head>
     <body>
@@ -17,9 +26,7 @@
                     <div class="content-wrapper">
                         @include('partials.header')
 
-                        <div class="col-lg-12 grid-margin stretch-card average-price-card">
-                            @include('partials.cards.code')
-                        </div>
+                        @yield('content')
                     </div>
                     @include('partials.footer')
                 </div>
@@ -27,15 +34,5 @@
         </div>
 
         <script src="{{ URL::asset('js/app.js') }}"></script>
-
-        <script>
-          /* construct manually */
-          var bar1 = new ldBar("#myItem1");
-          /* ldBar stored in the element */
-          var bar2 = document.getElementById('myItem1').ldBar;
-          bar1.set(60);
-
-          $('.ldBar-label').hide();
-        </script>
     </body>
 </html>

@@ -33,3 +33,6 @@ window.$ = window.jQuery = require('../../node_modules/jquery/dist/jquery.min');
 window.popperjs = require('../../node_modules/@popperjs/core/dist/cjs/popper');
 window.bootstrap = require('../../node_modules/bootstrap/dist/js/bootstrap.min');
 require('./loading-bar.min');
+require('./script.js');
+require('./code-block-partials.js');
+require('./add-code-form.js');

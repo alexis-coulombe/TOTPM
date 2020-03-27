@@ -1,24 +1,29 @@
-<div class="row page-title-header">
+<?php
+    /**
+     * Main header template.
+     * Contains filters.
+     */
+?>
+
+<div class="row page-title-header" style="margin: 90px 10px 10px 0;">
     <div class="col-12">
         <div class="page-header">
-            <div class="input-group mb-3">
+            <div class="input-group mb-3 ml-1">
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon3">Enter your code</span>
+                    <label for="secretCode" class="input-group-text">Enter your code</label>
                 </div>
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" class="form-control" id="secretCode" name="secretCode">
             </div>
-            <!--<div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                <ul class="quick-links">
-                    <li><a href="#">ICE Market data</a></li>
-                    <li><a href="#">Own analysis</a></li>
-                    <li><a href="#">Historic market data</a></li>
-                </ul>
-                <ul class="quick-links ml-auto">
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Watchlist</a></li>
-                </ul>
-            </div>-->
+            <div class="input-group mb-3 ml-1">
+                <div class="input-group-prepend">
+                    <label for="name" class="input-group-text">Give it a name</label>
+                </div>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="input-group mb-3 ml-1">
+                <button type="button" class="btn btn-primary" id="submitSecretCode" data-url="{{ route('code.store') }}">Process</button>
+            </div>
+
         </div>
     </div>
 </div>
