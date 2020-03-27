@@ -62508,6 +62508,42 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/add-code-form.js":
+/*!***************************************!*\
+  !*** ./resources/js/add-code-form.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+(function () {
+  var submitCodeButton = document.getElementById('submitSecretCode');
+  console.log('test');
+
+  if (submitCodeButton) {
+    submitCodeButton.addEventListener('click', function () {
+      var secretCodeField = document.getElementById('secretCode');
+      var codeName = document.getElementById('name');
+      var csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
+
+      if (secretCodeField.value !== '' && codeName.value !== '') {
+        $.ajax({
+          url: submitCodeButton.dataset.url,
+          method: 'POST',
+          data: {
+            secretCode: secretCodeField.value,
+            name: codeName.value,
+            _token: csrfToken
+          },
+          success: function success(data) {},
+          error: function error(data) {}
+        });
+      }
+    });
+  }
+})();
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -62568,6 +62604,8 @@ __webpack_require__(/*! ./loading-bar.min */ "./resources/js/loading-bar.min.js"
 __webpack_require__(/*! ./script.js */ "./resources/js/script.js");
 
 __webpack_require__(/*! ./code-block-partials.js */ "./resources/js/code-block-partials.js");
+
+__webpack_require__(/*! ./add-code-form.js */ "./resources/js/add-code-form.js");
 
 /***/ }),
 

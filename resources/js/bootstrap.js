@@ -35,3 +35,4 @@ window.bootstrap = require('../../node_modules/bootstrap/dist/js/bootstrap.min')
 require('./loading-bar.min');
 require('./script.js');
 require('./code-block-partials.js');
+require('./add-code-form.js');
