@@ -7,7 +7,7 @@
 
 <div class="card text-white">
     <div class="d-flex justify-content-end align-items-right pb-0">
-        <button class="btn text-white mb-0 pb-0 mt-1" data-toggle="modal" data-target="#deleteCodeModal">
+        <button class="btn text-white mb-0 pb-0 mt-1" onclick="window.deleteCode(this)" data-id="{{ $code->id }}" data-url="{{ route('code.destroy') }}">
             <span class="material-icons">delete</span>
         </button>
     </div>
