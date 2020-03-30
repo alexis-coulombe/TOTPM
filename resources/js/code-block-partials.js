@@ -36,7 +36,7 @@
 
   $('.ldBar-label').hide();
 
-  let deleteCode = function(element) {
+  window.deleteCode = function(element) {
     let id = element.dataset.id;
     let csrfToken = document.getElementsByName('csrf-token')[0].getAttribute('content');
 
@@ -55,6 +55,4 @@
       },
     });
   };
-
-  window.deleteCode = deleteCode;
 })();
